@@ -5,7 +5,7 @@
     "lat": 52.0907,
     "lon": 5.1214,
     "team": "none",
-    "challenge": "Maak een teamfoto met de Domtoren.",
+    "information": "Maak een teamfoto met de Domtoren.",
     "image": "dom.jpg"
   },
   {
@@ -13,8 +13,8 @@
     "name": "Neude",
     "lat": 52.093,
     "lon": 5.118,
-    "team": "green",
-    "challenge": "Zoek een straatmuzikant.",
+    "team": "none",
+    "information": "Zoek een straatmuzikant.",
     "image": "neude.jpg"
   },
   {
@@ -23,7 +23,7 @@
     "lat": 52.089002539917665,
     "lon": 5.121410503234041,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "kafe_belgie.jpg"
   },
   {
@@ -32,7 +32,7 @@
     "lat": 52.09237118057648,
     "lon": 5.1194923737573825,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "twintig_twintig.jpg"
   },
   {
@@ -41,7 +41,7 @@
     "lat": 52.0914701194954,
     "lon": 5.117837085914687,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "kartoffel.jpg"
   },
   {
@@ -50,7 +50,7 @@
     "lat": 52.09163782712417,
     "lon": 5.120428564875876,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "restaurant_san_siro.jpg"
   },
   {
@@ -58,8 +58,8 @@
     "name": "College voor de rechten van de mens",
     "lat": 52.09795604680639,
     "lon": 5.127634569096338,
-    "team": "green",
-    "challenge": "Zoek een straatmuzikant.",
+    "team": "none",
+    "information": "Zoek een straatmuzikant.",
     "image": "cvdrvdm.jpg"
   },
   {
@@ -68,7 +68,7 @@
     "lat": 52.09212824381932,
     "lon": 5.110256078791378,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "smakkelaarsveld.jpg"
   },
   {
@@ -77,7 +77,7 @@
     "lat": 52.08715910813125,
     "lon": 5.121611393922906,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "kringloop_de_arm.jpg"
   },
   {
@@ -86,7 +86,7 @@
     "lat": 52.08320384942813,
     "lon": 5.125349671931099,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "nicolaikerk.jpg"
   },
   {
@@ -95,7 +95,7 @@
     "lat": 52.09507804486261,
     "lon": 5.1288578389907356,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "grillroom_sphinx.jpg"
   },
   {
@@ -104,7 +104,7 @@
     "lat": 52.09544289634492,
     "lon": 5.131344842232669,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "apotheek_koert.jpg"
   },
   {
@@ -113,7 +113,7 @@
     "lat": 52.08206072813856,
     "lon": 5.123883584418086,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "leo_leo.jpg"
   },
   {
@@ -122,7 +122,7 @@
     "lat": 52.08240595124832,
     "lon": 5.123449437654406,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "persepolis.jpg"
   },
   {
@@ -131,7 +131,7 @@
     "lat": 52.09227606320756,
     "lon": 5.122274693794732,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "restaurant_sevilla.jpg"
   },
   {
@@ -140,7 +140,7 @@
     "lat": 52.090761387377384,
     "lon": 5.118624422635546,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "the_lekker_lekker_store.jpg"
   },
   {
@@ -148,8 +148,8 @@
     "name": "Park Lepelenburg",
     "lat": 52.08948354239445,
     "lon": 5.128287824046733,
-    "team": "green",
-    "challenge": "Zoek een straatmuzikant.",
+    "team": "none",
+    "information": "Zoek een straatmuzikant.",
     "image": "park_lepelenburg.jpg"
   },
   {
@@ -157,8 +157,8 @@
     "name": "Mick'O Connells",
     "lat": 52.09255379420059,
     "lon": 5.122670627116155,
-    "team": "green",
-    "challenge": "Zoek een straatmuzikant.",
+    "team": "none",
+    "information": "Zoek een straatmuzikant.",
     "image": "mick_o_connells.jpg"
   },
   {
@@ -167,7 +167,7 @@
     "lat": 52.08541507583056,
     "lon": 5.129318332852796,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "sonnenborgh.jpg"
   },
   {
@@ -176,7 +176,7 @@
     "lat": 52.08788041494583,
     "lon": 5.127740027423075,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "leeuwenbergh.jpg"
   },
   {
@@ -185,7 +185,7 @@
     "lat": 52.09450785325501,
     "lon": 5.110759652169658,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "paardenveld.jpg"
   },
   {
@@ -194,7 +194,7 @@
     "lat": 52.09264444197109,
     "lon": 5.114913419380188,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "vredenburg.jpg"
   },
   {
@@ -203,7 +203,7 @@
     "lat": 52.09089165820311,
     "lon": 5.117432659873933,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "janskerkhof.jpg"
   },
   {
@@ -212,7 +212,7 @@
     "lat": 52.08883589620595,
     "lon": 5.118870816096191,
     "team": "none",
-    "challenge": "Zoek een straatmuzikant.",
+    "information": "Zoek een straatmuzikant.",
     "image": "mariaplaats.jpg"
   }
 ]

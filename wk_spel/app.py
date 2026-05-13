@@ -31,7 +31,8 @@ TEAM_COLORS = {
     "red": "red",
     "blue": "blue",
     "green": "green",
-    "yellow": "orange"
+    "yellow": "orange",
+    "pink": "pink"
 }
 
 TEAM_NAMES = {
@@ -39,8 +40,18 @@ TEAM_NAMES = {
     "blue": "Curaçao",
     "green": "Zuid-Korea",
     "yellow": "Oostenrijk",
+    "pink": "Engeland",
     "none": "Niemand"
 }
+
+TEAM_ICONS = {
+    "red": "static/icons/turkey.jpg",
+    "blue": "static/icons/curacao.jpg",
+    "green": "static/icons/korea.jpg",
+    "yellow": "static/icons/austria.jpg",
+    "pink": "static/icons/england.jpg"
+}
+
 
 # -----------------------------------
 # KAART GENEREREN
@@ -60,8 +71,6 @@ def generate_map():
     # Marker toevoegen
     for loc in locations:
 
-        color = TEAM_COLORS.get(loc["team"], "gray")
-
         image_path = f"/static/images/{loc['image']}"
 
         popup_html = f"""
@@ -73,8 +82,8 @@ def generate_map():
                  style="border-radius:10px">
 
             <p>
-                <b>Opdracht:</b><br>
-                {loc['challenge']}
+                <b>Info:</b><br>
+                {loc['information']}
             </p>
 
             <p>
@@ -89,9 +98,10 @@ def generate_map():
 
                 <select name="team">
                     <option value="red">Turkije</option>
-                    <option value="blue">Curacao</option>
+                    <option value="blue">Curaçao</option>
                     <option value="green">Zuid-Korea</option>
                     <option value="yellow">Oostenrijk</option>
+                    <option value="pink">Engeland</option>
                     <option value="none">Nog niet veroverd</option>
                 </select>
 
@@ -103,12 +113,52 @@ def generate_map():
         </div>
         """
 
-        folium.Marker(
-            location=[loc["lat"], loc["lon"]],
-            popup=folium.Popup(popup_html, max_width=300),
-            tooltip=loc["name"],
-            icon=folium.Icon(color=color, icon="flag")
-        ).add_to(m)
+        # -----------------------------------
+        # VEROEVERDE LOCATIE → VLAG MARKER
+        # -----------------------------------
+
+        if loc["team"] != "none":
+
+            icon_html = f"""
+            <div style="
+                width:32px;
+                height:32px;
+                border-radius:40%;
+                overflow:hidden;
+                border:2px solid white;
+                box-shadow:0 0 6px rgba(0,0,0,0.4);
+            ">
+                <img src='/{TEAM_ICONS[loc["team"]]}'
+                     style='width:100%; height:100%; object-fit:cover;'>
+            </div>
+            """
+
+            custom_icon = folium.DivIcon(
+                html=icon_html
+            )
+
+            folium.Marker(
+                location=[loc["lat"], loc["lon"]],
+                popup=folium.Popup(popup_html, max_width=300),
+                tooltip=loc["name"],
+                icon=custom_icon
+            ).add_to(m)
+
+        # -----------------------------------
+        # NIET VEROEVERD → GRIJZE MARKER
+        # -----------------------------------
+
+        else:
+
+            folium.Marker(
+                location=[loc["lat"], loc["lon"]],
+                popup=folium.Popup(popup_html, max_width=300),
+                tooltip=loc["name"],
+                icon=folium.Icon(
+                    color="gray",
+                    icon="info-sign"
+                )
+            ).add_to(m)
 
     return m._repr_html_()
 
@@ -127,7 +177,8 @@ def index():
         "red": 0,
         "blue": 0,
         "green": 0,
-        "yellow": 0
+        "yellow": 0,
+        "pink": 0
     }
 
     for loc in locations:
@@ -171,4 +222,4 @@ def capture():
 # -----------------------------------
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
