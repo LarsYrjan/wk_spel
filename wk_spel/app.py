@@ -34,6 +34,13 @@ TEAM_COLORS = {
     "yellow": "orange"
 }
 
+TEAM_NAMES = {
+    "red": "Turkije",
+    "blue": "Curaçao",
+    "green": "Zuid-Korea",
+    "yellow": "Oostenrijk",
+    "none": "Niemand"
+}
 
 # -----------------------------------
 # KAART GENEREREN
@@ -71,7 +78,7 @@ def generate_map():
             </p>
 
             <p>
-                <b>Bezit:</b> {loc['team']}
+                <b>Verovert door:</b> {TEAM_NAMES[loc['team']]}
             </p>
 
             <form action="/capture" method="POST">
@@ -81,11 +88,11 @@ def generate_map():
                        value="{loc['id']}">
 
                 <select name="team">
-                    <option value="red">Rood</option>
-                    <option value="blue">Blauw</option>
-                    <option value="green">Groen</option>
-                    <option value="yellow">Geel</option>
-                    <option value="none">Reset</option>
+                    <option value="red">Turkije</option>
+                    <option value="blue">Curacao</option>
+                    <option value="green">Zuid-Korea</option>
+                    <option value="yellow">Oostenrijk</option>
+                    <option value="none">Nog niet veroverd</option>
                 </select>
 
                 <button type="submit">

@@ -28,10 +28,32 @@
             border-radius: 12px;
 
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
+
+            min-width: 220px;
         }
 
         .scoreboard h2 {
             margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .team-score {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin-bottom: 10px;
+
+            font-size: 18px;
+        }
+
+        .team-score img {
+            width: 32px;
+            height: auto;
+
+            border-radius: 3px;
+
+            border: 1px solid #ccc;
         }
 
         iframe {
@@ -49,10 +71,25 @@
 
         <h2>WK Drankspel</h2>
 
-        <div>🔴 Rood: {{ scores.red }}</div>
-        <div>🔵 Blauw: {{ scores.blue }}</div>
-        <div>🟢 Groen: {{ scores.green }}</div>
-        <div>🟡 Geel: {{ scores.yellow }}</div>
+        <div class="team-score">
+            <img src="/static/flags/turkey.jpg">
+            Turkije: {{ scores.red }}
+        </div>
+
+        <div class="team-score">
+            <img src="/static/flags/curacao.jpg">
+            Curaçao: {{ scores.blue }}
+        </div>
+
+        <div class="team-score">
+            <img src="/static/flags/korea.jpg">
+            Zuid-Korea: {{ scores.green }}
+        </div>
+
+        <div class="team-score">
+            <img src="/static/flags/austria.jpg">
+            Oostenrijk: {{ scores.yellow }}
+        </div>
 
     </div>
 
