@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Domtoren",
+    "lat": 52.0907,
+    "lon": 5.1214,
+    "team": "green",
+    "challenge": "Maak een teamfoto met de Domtoren.",
+    "image": "dom.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Neude",
+    "lat": 52.093,
+    "lon": 5.118,
+    "team": "blue",
+    "challenge": "Zoek een straatmuzikant.",
+    "image": "neude.jpg"
+  }
+]
