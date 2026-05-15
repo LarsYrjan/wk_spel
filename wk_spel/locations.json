@@ -5,6 +5,7 @@
     "lat": 52.08786494941877,
     "lon": 5.127657538406204,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "leeuwenbergh.jpg"
   },
@@ -14,6 +15,7 @@
     "lat": 52.0920430192948,
     "lon": 5.118988960167675,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "duke_of_tokyo.jpg"
   },
@@ -23,6 +25,7 @@
     "lat": 52.089002539917665,
     "lon": 5.121410503234041,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "kafe_belgie.jpg"
   },
@@ -32,6 +35,7 @@
     "lat": 52.09237118057648,
     "lon": 5.1194923737573825,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "twintig_twintig.jpg"
   },
@@ -41,6 +45,7 @@
     "lat": 52.0914701194954,
     "lon": 5.117837085914687,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "kartoffel.jpg"
   },
@@ -50,6 +55,7 @@
     "lat": 52.09163782712417,
     "lon": 5.120428564875876,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "restaurant_san_siro.jpg"
   },
@@ -59,6 +65,7 @@
     "lat": 52.09795604680639,
     "lon": 5.127634569096338,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "cvdrvdm.jpg"
   },
@@ -68,6 +75,7 @@
     "lat": 52.09212824381932,
     "lon": 5.110256078791378,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "smakkelaarsveld.jpg"
   },
@@ -77,6 +85,7 @@
     "lat": 52.08715910813125,
     "lon": 5.121611393922906,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "kringloop_de_arm.jpg"
   },
@@ -86,6 +95,7 @@
     "lat": 52.08320384942813,
     "lon": 5.125349671931099,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "nicolaikerk.jpg"
   },
@@ -95,8 +105,10 @@
     "lat": 52.09507804486261,
     "lon": 5.1288578389907356,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
-    "image": "grillroom_sphinx.jpg"
+    "image": "grillroom_sphinx.jpg",
+    "first_captured_by": null
   },
   {
     "id": 12,
@@ -104,8 +116,10 @@
     "lat": 52.09544289634492,
     "lon": 5.131344842232669,
     "team": "none",
-    "information": "Zoek een straatmuzikant.",
-    "image": "apotheek_koert.jpg"
+    "first_captured": false,
+    "information": "Deze locatie bevat een power-up.",
+    "image": "apotheek_koert.jpg",
+    "first_captured_by": null
   },
   {
     "id": 13,
@@ -113,6 +127,7 @@
     "lat": 52.08206072813856,
     "lon": 5.123883584418086,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "leo_leo.jpg"
   },
@@ -122,6 +137,7 @@
     "lat": 52.08240595124832,
     "lon": 5.123449437654406,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "persepolis.jpg"
   },
@@ -131,6 +147,7 @@
     "lat": 52.09227606320756,
     "lon": 5.122274693794732,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "restaurant_sevilla.jpg"
   },
@@ -140,6 +157,7 @@
     "lat": 52.090761387377384,
     "lon": 5.118624422635546,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "the_lekker_lekker_store.jpg"
   },
@@ -149,6 +167,7 @@
     "lat": 52.08948354239445,
     "lon": 5.128287824046733,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "park_lepelenburg.jpg"
   },
@@ -158,6 +177,7 @@
     "lat": 52.09255379420059,
     "lon": 5.122670627116155,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "mick_o_connells.jpg"
   },
@@ -167,6 +187,7 @@
     "lat": 52.08541507583056,
     "lon": 5.129318332852796,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "sonnenborgh.jpg"
   },
@@ -176,6 +197,7 @@
     "lat": 52.09450785325501,
     "lon": 5.110759652169658,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "paardenveld.jpg"
   },
@@ -185,6 +207,7 @@
     "lat": 52.0906756513598,
     "lon": 5.120892790878399,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "lebowski.jpg"
   },
@@ -194,6 +217,7 @@
     "lat": 52.08799585831675,
     "lon": 5.130982697756828,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "spoorwegmuseum.jpg"
   },
@@ -203,6 +227,7 @@
     "lat": 52.09276990552718,
     "lon": 5.118702692320174,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "cafe_le_journal.jpg"
   },
@@ -212,6 +237,7 @@
     "lat": 52.09616598654394,
     "lon": 5.120141559853096,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "pannakooi_asch_van_wijckskade.jpg"
   },
@@ -221,6 +247,7 @@
     "lat": 52.094725062089005,
     "lon": 5.1200829080059975,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "number_nine.jpg"
   },
@@ -230,8 +257,10 @@
     "lat": 52.09594774508338,
     "lon": 5.107979416322375,
     "team": "none",
-    "information": "Zoek een straatmuzikant.",
-    "image": "massawa_ethiopian_and_eritrean_restaurant.jpg"
+    "first_captured": false,
+    "information": "Deze locatie bevat een power-up.",
+    "image": "massawa_ethiopian_and_eritrean_restaurant.jpg",
+    "first_captured_by": null
   },
   {
     "id": 27,
@@ -239,6 +268,7 @@
     "lat": 52.08599182581827,
     "lon": 5.11858659436387,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "de_singel.jpg"
   },
@@ -248,6 +278,7 @@
     "lat": 52.095237796855926,
     "lon": 5.114629492601267,
     "team": "none",
+    "first_captured": false,
     "information": "Zoek een straatmuzikant.",
     "image": "volksbuurtmuseum.jpg"
   }

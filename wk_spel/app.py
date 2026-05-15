@@ -23,17 +23,8 @@ def save_locations(data):
 
 
 # -----------------------------------
-# TEAM KLEUREN
+# TEAM INFO
 # -----------------------------------
-
-TEAM_COLORS = {
-    "none": "gray",
-    "red": "red",
-    "blue": "blue",
-    "green": "green",
-    "yellow": "orange",
-    "pink": "pink"
-}
 
 TEAM_NAMES = {
     "red": "Turkije",
@@ -54,6 +45,26 @@ TEAM_ICONS = {
 
 
 # -----------------------------------
+# ADMIN
+# -----------------------------------
+
+ADMIN_PASSWORD = "wk2026"
+
+
+# -----------------------------------
+# FIRST CAPTURES (IN MEMORY)
+# -----------------------------------
+
+FIRST_CAPTURES = {
+    "red": 0,
+    "blue": 0,
+    "green": 0,
+    "yellow": 0,
+    "pink": 0
+}
+
+
+# -----------------------------------
 # POWERUPS
 # -----------------------------------
 
@@ -68,20 +79,23 @@ def generate_map():
 
     locations = load_locations()
 
-    # Utrecht centrum
     m = folium.Map(
         location=[52.0907, 5.1214],
         zoom_start=15,
         tiles="CartoDB positron"
     )
 
-    # Marker toevoegen
     for loc in locations:
 
         image_path = f"/static/images/{loc['image']}"
 
+        # fix missing field safety
+        if "first_captured_by" not in loc:
+            loc["first_captured_by"] = None
+
         popup_html = f"""
         <div style="width:250px">
+
             <h3>{loc['name']}</h3>
 
             <img src="{image_path}"
@@ -94,46 +108,52 @@ def generate_map():
             </p>
 
             <p>
-                <b>Verovert door:</b> {TEAM_NAMES[loc['team']]}
+                <b>Veroverd door:</b>
+                {TEAM_NAMES[loc['team']]}
             </p>
 
-            <form action="/capture" method="POST">
+            <details style="margin-top:10px;">
+                <summary style="cursor:pointer;">
+                    Admin bediening
+                </summary>
 
-                <input type="hidden"
-                       name="id"
-                       value="{loc['id']}">
+                <form action="/capture" method="POST">
 
-                <select name="team">
-                    <option value="red">Turkije</option>
-                    <option value="blue">Curaçao</option>
-                    <option value="green">Zuid-Korea</option>
-                    <option value="yellow">Oostenrijk</option>
-                    <option value="pink">Engeland</option>
-                    <option value="none">Nog niet veroverd</option>
-                </select>
+                    <input type="hidden" name="id" value="{loc['id']}">
 
-                <button type="submit">
-                    Verover
-                </button>
+                    <input type="password"
+                           name="password"
+                           placeholder="Admin wachtwoord"
+                           style="width:95%; margin-top:10px; margin-bottom:8px;">
 
-            </form>
+                    <select name="team"
+                            style="width:100%; margin-bottom:8px;">
+
+                        <option value="red">Turkije</option>
+                        <option value="blue">Curaçao</option>
+                        <option value="green">Zuid-Korea</option>
+                        <option value="yellow">Oostenrijk</option>
+                        <option value="pink">Engeland</option>
+                        <option value="none">Reset</option>
+
+                    </select>
+
+                    <button type="submit"
+                            style="width:100%; padding:8px;">
+                        Opslaan
+                    </button>
+
+                </form>
+            </details>
+
         </div>
         """
 
-        # -----------------------------------
-        # VEROEVERDE LOCATIE → VLAG MARKER
-        # -----------------------------------
-
         if loc["team"] != "none":
-
-            # -----------------------------
-            # POWERUP STER
-            # -----------------------------
 
             star_html = ""
 
             if loc["id"] in POWERUP_LOCATIONS:
-
                 star_html = """
                 <div style="
                     position:absolute;
@@ -142,24 +162,12 @@ def generate_map():
                     font-size:20px;
                     z-index:999;
                     text-shadow:0 0 8px gold;
-                ">
-                    ⭐
-                </div>
+                ">⭐</div>
                 """
 
-            # -----------------------------
-            # MARKER HTML
-            # -----------------------------
-
             icon_html = f"""
-            <div style="
-                position:relative;
-                width:32px;
-                height:32px;
-            ">
-
+            <div style="position:relative; width:32px; height:32px;">
                 {star_html}
-
                 <div style="
                     width:32px;
                     height:32px;
@@ -171,92 +179,30 @@ def generate_map():
                     <img src='/{TEAM_ICONS[loc["team"]]}'
                          style='width:100%; height:100%; object-fit:cover;'>
                 </div>
-
             </div>
             """
-
-            custom_icon = folium.DivIcon(
-                html=icon_html
-            )
 
             folium.Marker(
                 location=[loc["lat"], loc["lon"]],
                 popup=folium.Popup(popup_html, max_width=300),
                 tooltip=loc["name"],
-                icon=custom_icon
+                icon=folium.DivIcon(html=icon_html)
             ).add_to(m)
-
-        # -----------------------------------
-        # NIET VEROEVERD → GRIJZE MARKER
-        # -----------------------------------
 
         else:
 
-            # -----------------------------
-            # POWERUP OP NEUTRALE LOCATIES
-            # -----------------------------
-
-            if loc["id"] in POWERUP_LOCATIONS:
-
-                icon_html = """
-                <div style="
-                    position:relative;
-                    width:32px;
-                    height:32px;
-                ">
-
-                    <div style="
-                        position:absolute;
-                        top:-18px;
-                        left:6px;
-                        font-size:20px;
-                        z-index:999;
-                        text-shadow:0 0 8px gold;
-                    ">
-                        ⭐
-                    </div>
-
-                    <div style="
-                        width:32px;
-                        height:32px;
-                        border-radius:50%;
-                        background:#999;
-                        border:2px solid white;
-                        box-shadow:0 0 6px rgba(0,0,0,0.4);
-                    ">
-                    </div>
-
-                </div>
-                """
-
-                custom_icon = folium.DivIcon(
-                    html=icon_html
-                )
-
-                folium.Marker(
-                    location=[loc["lat"], loc["lon"]],
-                    popup=folium.Popup(popup_html, max_width=300),
-                    tooltip=loc["name"],
-                    icon=custom_icon
-                ).add_to(m)
-
-            else:
-
-                folium.Marker(
-                    location=[loc["lat"], loc["lon"]],
-                    popup=folium.Popup(popup_html, max_width=300),
-                    tooltip=loc["name"],
-                    icon=folium.Icon(
-                        color="gray",
-                        icon="info-sign"
-                    )
-                ).add_to(m)
+            folium.Marker(
+                location=[loc["lat"], loc["lon"]],
+                popup=folium.Popup(popup_html, max_width=300),
+                tooltip=loc["name"],
+                icon=folium.Icon(color="gray", icon="info-sign")
+            ).add_to(m)
 
     return m._repr_html_()
 
 
 # -----------------------------------
-# HOOFDPAGINA
+# INDEX
 # -----------------------------------
 
 @app.route("/")
@@ -264,7 +210,6 @@ def index():
 
     locations = load_locations()
 
-    # Scores berekenen
     scores = {
         "red": 0,
         "blue": 0,
@@ -274,34 +219,78 @@ def index():
     }
 
     for loc in locations:
-        team = loc["team"]
-
-        if team in scores:
-            scores[team] += 1
-
-    map_html = generate_map()
+        if loc["team"] in scores:
+            scores[loc["team"]] += 1
 
     return render_template(
         "index.html",
-        map_html=map_html,
-        scores=scores
+        map_html=generate_map(),
+        scores=scores,
+        first_captures=FIRST_CAPTURES
     )
 
 
 # -----------------------------------
-# LOCATIE VEROVEREN
+# CAPTURE LOGICA (FIXED)
 # -----------------------------------
 
 @app.route("/capture", methods=["POST"])
 def capture():
 
+    global FIRST_CAPTURES
+
     loc_id = int(request.form["id"])
     new_team = request.form["team"]
+    password = request.form["password"]
+
+    if password != ADMIN_PASSWORD:
+        return "Verkeerd admin wachtwoord"
 
     locations = load_locations()
 
     for loc in locations:
+
         if loc["id"] == loc_id:
+
+            old_team = loc["team"]
+
+            if "first_captured_by" not in loc:
+                loc["first_captured_by"] = None
+
+            # -----------------------------------
+            # RESET
+            # -----------------------------------
+
+            if new_team == "none":
+
+                owner = loc.get("first_captured_by")
+
+                if owner in FIRST_CAPTURES:
+                    FIRST_CAPTURES[owner] = max(
+                        0,
+                        FIRST_CAPTURES[owner] - 1
+                    )
+
+                loc["first_captured"] = False
+                loc["first_captured_by"] = None
+
+            # -----------------------------------
+            # FIRST CAPTURE
+            # -----------------------------------
+
+            elif (
+                old_team == "none"
+                and not loc.get("first_captured", False)
+            ):
+
+                FIRST_CAPTURES[new_team] += 1
+                loc["first_captured"] = True
+                loc["first_captured_by"] = new_team
+
+            # -----------------------------------
+            # UPDATE TEAM
+            # -----------------------------------
+
             loc["team"] = new_team
 
     save_locations(locations)
@@ -315,3 +304,4 @@ def capture():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
+    

@@ -30,12 +30,22 @@
 
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
 
-            min-width: 220px;
+            min-width: 240px;
+            max-height: 90vh;
+
+            overflow-y: auto;
         }
 
         .scoreboard h2 {
             margin-top: 0;
             margin-bottom: 15px;
+        }
+
+        .scoreboard h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+
+            font-size: 18px;
         }
 
         .team-score {
@@ -57,6 +67,35 @@
             border: 1px solid #ccc;
         }
 
+        hr {
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        /* 🔥 NIEUW: kleinere first captures sectie */
+        .first-captures {
+            margin-top: 10px;
+        }
+
+        .first-captures .team-score {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .first-captures .team-score img {
+            width: 22px;
+            height: auto;
+        }
+
+        .first-captures h3 {
+            font-size: 15px;
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+
         #map {
             width: 100%;
             height: 100vh;
@@ -70,6 +109,8 @@
     <div class="scoreboard">
 
         <h2>WK Drankspel</h2>
+
+        <!-- TOTALE SCORE -->
 
         <div class="team-score">
             <img src="/static/flags/turkey.jpg">
@@ -94,6 +135,41 @@
         <div class="team-score">
             <img src="/static/flags/england.jpg">
             Engeland: {{ scores.pink }}
+        </div>
+
+        <hr>
+
+        <!-- EERSTE VEROEVERINGEN -->
+
+        <div class="first-captures">
+
+            <h3>Eerste Veroveringen</h3>
+
+            <div class="team-score">
+                <img src="/static/flags/turkey.jpg">
+                Turkije: {{ first_captures.red }}
+            </div>
+
+            <div class="team-score">
+                <img src="/static/flags/curacao.jpg">
+                Curaçao: {{ first_captures.blue }}
+            </div>
+
+            <div class="team-score">
+                <img src="/static/flags/korea.jpg">
+                Zuid-Korea: {{ first_captures.green }}
+            </div>
+
+            <div class="team-score">
+                <img src="/static/flags/austria.jpg">
+                Oostenrijk: {{ first_captures.yellow }}
+            </div>
+
+            <div class="team-score">
+                <img src="/static/flags/england.jpg">
+                Engeland: {{ first_captures.pink }}
+            </div>
+
         </div>
 
     </div>
