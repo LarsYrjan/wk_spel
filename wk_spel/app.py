@@ -53,6 +53,11 @@ TEAM_ICONS = {
 }
 
 
+# -----------------------------------
+# POWERUPS
+# -----------------------------------
+
+POWERUP_LOCATIONS = [12, 26]
 
 
 # -----------------------------------
@@ -121,17 +126,52 @@ def generate_map():
 
         if loc["team"] != "none":
 
+            # -----------------------------
+            # POWERUP STER
+            # -----------------------------
+
+            star_html = ""
+
+            if loc["id"] in POWERUP_LOCATIONS:
+
+                star_html = """
+                <div style="
+                    position:absolute;
+                    top:-18px;
+                    left:6px;
+                    font-size:20px;
+                    z-index:999;
+                    text-shadow:0 0 8px gold;
+                ">
+                    ⭐
+                </div>
+                """
+
+            # -----------------------------
+            # MARKER HTML
+            # -----------------------------
+
             icon_html = f"""
             <div style="
+                position:relative;
                 width:32px;
                 height:32px;
-                border-radius:40%;
-                overflow:hidden;
-                border:2px solid white;
-                box-shadow:0 0 6px rgba(0,0,0,0.4);
             ">
-                <img src='/{TEAM_ICONS[loc["team"]]}'
-                     style='width:100%; height:100%; object-fit:cover;'>
+
+                {star_html}
+
+                <div style="
+                    width:32px;
+                    height:32px;
+                    border-radius:40%;
+                    overflow:hidden;
+                    border:2px solid white;
+                    box-shadow:0 0 6px rgba(0,0,0,0.4);
+                ">
+                    <img src='/{TEAM_ICONS[loc["team"]]}'
+                         style='width:100%; height:100%; object-fit:cover;'>
+                </div>
+
             </div>
             """
 
@@ -152,15 +192,65 @@ def generate_map():
 
         else:
 
-            folium.Marker(
-                location=[loc["lat"], loc["lon"]],
-                popup=folium.Popup(popup_html, max_width=300),
-                tooltip=loc["name"],
-                icon=folium.Icon(
-                    color="gray",
-                    icon="info-sign"
+            # -----------------------------
+            # POWERUP OP NEUTRALE LOCATIES
+            # -----------------------------
+
+            if loc["id"] in POWERUP_LOCATIONS:
+
+                icon_html = """
+                <div style="
+                    position:relative;
+                    width:32px;
+                    height:32px;
+                ">
+
+                    <div style="
+                        position:absolute;
+                        top:-18px;
+                        left:6px;
+                        font-size:20px;
+                        z-index:999;
+                        text-shadow:0 0 8px gold;
+                    ">
+                        ⭐
+                    </div>
+
+                    <div style="
+                        width:32px;
+                        height:32px;
+                        border-radius:50%;
+                        background:#999;
+                        border:2px solid white;
+                        box-shadow:0 0 6px rgba(0,0,0,0.4);
+                    ">
+                    </div>
+
+                </div>
+                """
+
+                custom_icon = folium.DivIcon(
+                    html=icon_html
                 )
-            ).add_to(m)
+
+                folium.Marker(
+                    location=[loc["lat"], loc["lon"]],
+                    popup=folium.Popup(popup_html, max_width=300),
+                    tooltip=loc["name"],
+                    icon=custom_icon
+                ).add_to(m)
+
+            else:
+
+                folium.Marker(
+                    location=[loc["lat"], loc["lon"]],
+                    popup=folium.Popup(popup_html, max_width=300),
+                    tooltip=loc["name"],
+                    icon=folium.Icon(
+                        color="gray",
+                        icon="info-sign"
+                    )
+                ).add_to(m)
 
     return m._repr_html_()
 
