@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "name": "Domtoren",
-    "lat": 52.0907,
-    "lon": 5.1214,
+    "name": "Leeuwenbergh",
+    "lat": 52.08786494941877,
+    "lon": 5.127657538406204,
     "team": "none",
-    "information": "Maak een teamfoto met de Domtoren.",
-    "image": "dom.jpg"
+    "information": "Zoek een straatmuzikant.",
+    "image": "leeuwenbergh.jpg"
   },
   {
     "id": 2,
@@ -172,15 +172,6 @@
   },
   {
     "id": 20,
-    "name": "Leeuwenbergh",
-    "lat": 52.08788041494583,
-    "lon": 5.127740027423075,
-    "team": "none",
-    "information": "Zoek een straatmuzikant.",
-    "image": "leeuwenbergh.jpg"
-  },
-  {
-    "id": 21,
     "name": "Paardenveld",
     "lat": 52.09450785325501,
     "lon": 5.110759652169658,
@@ -189,7 +180,7 @@
     "image": "paardenveld.jpg"
   },
   {
-    "id": 22,
+    "id": 21,
     "name": "Lebowski",
     "lat": 52.0906756513598,
     "lon": 5.120892790878399,
@@ -198,7 +189,7 @@
     "image": "lebowski.jpg"
   },
   {
-    "id": 23,
+    "id": 22,
     "name": "Spoorwegmuseum",
     "lat": 52.08799585831675,
     "lon": 5.130982697756828,
@@ -207,7 +198,7 @@
     "image": "spoorwegmuseum.jpg"
   },
   {
-    "id": 24,
+    "id": 23,
     "name": "Caf\u00e9 Le Journal",
     "lat": 52.09276990552718,
     "lon": 5.118702692320174,
@@ -216,7 +207,7 @@
     "image": "cafe_le_journal.jpg"
   },
   {
-    "id": 25,
+    "id": 24,
     "name": "Pannakooi Asch van Wijckskade",
     "lat": 52.09616598654394,
     "lon": 5.120141559853096,
@@ -225,7 +216,7 @@
     "image": "pannakooi_asch_van_wijckskade.jpg"
   },
   {
-    "id": 26,
+    "id": 25,
     "name": "Number Nine",
     "lat": 52.094725062089005,
     "lon": 5.1200829080059975,
@@ -234,12 +225,30 @@
     "image": "number_nine.jpg"
   },
   {
-    "id": 27,
+    "id": 26,
     "name": "Massawa Ethiopian & Eritrean Restaurant",
     "lat": 52.09594774508338,
     "lon": 5.107979416322375,
     "team": "none",
     "information": "Zoek een straatmuzikant.",
     "image": "massawa_ethiopian_and_eritrean_restaurant.jpg"
+  },
+  {
+    "id": 27,
+    "name": "De Singel",
+    "lat": 52.08599182581827,
+    "lon": 5.11858659436387,
+    "team": "none",
+    "information": "Zoek een straatmuzikant.",
+    "image": "de_singel.jpg"
+  },
+  {
+    "id": 28,
+    "name": "Volksbuurtmuseum",
+    "lat": 52.095237796855926,
+    "lon": 5.114629492601267,
+    "team": "none",
+    "information": "Zoek een straatmuzikant.",
+    "image": "volksbuurtmuseum.jpg"
   }
 ]
