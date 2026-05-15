@@ -10,12 +10,12 @@
   },
   {
     "id": 2,
-    "name": "Neude",
-    "lat": 52.093,
-    "lon": 5.118,
+    "name": "Duke of Tokyo",
+    "lat": 52.0920430192948,
+    "lon": 5.118988960167675,
     "team": "none",
     "information": "Zoek een straatmuzikant.",
-    "image": "neude.jpg"
+    "image": "duke_of_tokyo.jpg"
   },
   {
     "id": 3,
@@ -136,7 +136,7 @@
   },
   {
     "id": 16,
-    "name": "The lekker lekker store",
+    "name": "The lekker store",
     "lat": 52.090761387377384,
     "lon": 5.118624422635546,
     "team": "none",
@@ -190,29 +190,56 @@
   },
   {
     "id": 22,
-    "name": "Vredenburg",
-    "lat": 52.09264444197109,
-    "lon": 5.114913419380188,
+    "name": "Lebowski",
+    "lat": 52.0906756513598,
+    "lon": 5.120892790878399,
     "team": "none",
     "information": "Zoek een straatmuzikant.",
-    "image": "vredenburg.jpg"
+    "image": "lebowski.jpg"
   },
   {
     "id": 23,
-    "name": "Janskerkhof",
-    "lat": 52.09089165820311,
-    "lon": 5.117432659873933,
+    "name": "Spoorwegmuseum",
+    "lat": 52.08799585831675,
+    "lon": 5.130982697756828,
     "team": "none",
     "information": "Zoek een straatmuzikant.",
-    "image": "janskerkhof.jpg"
+    "image": "spoorwegmuseum.jpg"
   },
   {
     "id": 24,
-    "name": "Mariaplaats",
-    "lat": 52.08883589620595,
-    "lon": 5.118870816096191,
+    "name": "Caf\u00e9 Le Journal",
+    "lat": 52.09276990552718,
+    "lon": 5.118702692320174,
     "team": "none",
     "information": "Zoek een straatmuzikant.",
-    "image": "mariaplaats.jpg"
+    "image": "cafe_le_journal.jpg"
+  },
+  {
+    "id": 25,
+    "name": "Pannakooi Asch van Wijckskade",
+    "lat": 52.09616598654394,
+    "lon": 5.120141559853096,
+    "team": "none",
+    "information": "Zoek een straatmuzikant.",
+    "image": "pannakooi_asch_van_wijckskade.jpg"
+  },
+  {
+    "id": 26,
+    "name": "Number Nine",
+    "lat": 52.094725062089005,
+    "lon": 5.1200829080059975,
+    "team": "none",
+    "information": "Zoek een straatmuzikant.",
+    "image": "number_nine.jpg"
+  },
+  {
+    "id": 27,
+    "name": "Massawa Ethiopian & Eritrean Restaurant",
+    "lat": 52.09594774508338,
+    "lon": 5.107979416322375,
+    "team": "none",
+    "information": "Zoek een straatmuzikant.",
+    "image": "massawa_ethiopian_and_eritrean_restaurant.jpg"
   }
 ]
