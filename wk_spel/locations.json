@@ -6,7 +6,7 @@
     "lon": 5.127657538406204,
     "team": "none",
     "first_captured": false,
-    "information": "Zoek een straatmuzikant.",
+    "information": "-",
     "image": "leeuwenbergh.jpg"
   },
   {
@@ -27,7 +27,8 @@
     "team": "none",
     "first_captured": false,
     "information": "Zoek een straatmuzikant.",
-    "image": "kafe_belgie.jpg"
+    "image": "kafe_belgie.jpg",
+    "first_captured_by": null
   },
   {
     "id": 4,
@@ -270,7 +271,8 @@
     "team": "none",
     "first_captured": false,
     "information": "Zoek een straatmuzikant.",
-    "image": "de_singel.jpg"
+    "image": "de_singel.jpg",
+    "first_captured_by": null
   },
   {
     "id": 28,
