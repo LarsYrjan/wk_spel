@@ -89,21 +89,39 @@ def generate_map():
 
         image_path = f"/static/images/{loc['image']}"
 
+        # safety defaults
         if "first_captured_by" not in loc:
             loc["first_captured_by"] = None
         if "locked" not in loc:
             loc["locked"] = False
+        if "capture_count" not in loc:
+            loc["capture_count"] = 0
 
         is_locked  = loc.get("locked", False)
         is_powerup = loc["id"] in POWERUP_LOCATIONS
 
-        # Info tekst
+        # -----------------------------------
+        # INFO TEKST
+        # -----------------------------------
+
         if is_locked:
             info_html = "🔒 Deze locatie kan niet meer worden veroverd middels een powerup."
+        elif loc["team"] != "none" and loc["capture_count"] > 0:
+            beer_icons = "🍺" * loc["capture_count"]
+            info_html = f"""
+            {loc['information']}
+            <br><br>
+            <b>Om over te nemen:</b><br>
+            Voer de opdracht uit en drink {loc['capture_count']} biertje{'s' if loc['capture_count'] > 1 else ''}:<br>
+            <span style="font-size:20px; letter-spacing:2px;">{beer_icons}</span>
+            """
         else:
-            info_html = loc["information"]
+            info_html = loc['information']
 
-        # Lock knop label
+        # -----------------------------------
+        # ADMIN FORMULIER
+        # -----------------------------------
+
         lock_label  = "🔓 Ontgrendel locatie" if is_locked else "🔒 Vergrendel locatie"
         lock_action = "unlock" if is_locked else "lock"
 
@@ -120,7 +138,8 @@ def generate_map():
                 <option value="pink">Engeland</option>
                 <option value="none">Reset</option>
             </select>
-            <button type="submit" style="width:100%; padding:8px; cursor:pointer; margin-bottom:6px;">
+            <button type="submit"
+                    style="width:100%; padding:8px; cursor:pointer; margin-bottom:6px;">
                 Opslaan
             </button>
         </form>
@@ -144,7 +163,7 @@ def generate_map():
                     font-size:14px; line-height:1.4;">
             <h3>{loc['name']}</h3>
             <img src="{image_path}" width="220" style="border-radius:10px">
-            <p><b>Info:</b><br>{info_html}</p>
+            <p>{info_html}</p>
             <p><b>Veroverd door:</b> {TEAM_NAMES[loc['team']]}</p>
             <details style="margin-top:10px;">
                 <summary style="cursor:pointer;">Alleen voor coach Lars &amp; Jelle</summary>
@@ -153,8 +172,11 @@ def generate_map():
         </div>
         """
 
-        # Badges opbouwen
-        star_top  = "-36px" if (is_powerup and is_locked) else "-20px"
+        # -----------------------------------
+        # BADGES (ster + slot)
+        # -----------------------------------
+
+        star_top   = "-36px" if (is_powerup and is_locked) else "-20px"
         star_badge = f"""
         <div style="position:absolute; top:{star_top}; left:6px; font-size:18px;
                     z-index:999; text-shadow:0 0 8px gold;">⭐</div>
@@ -165,7 +187,10 @@ def generate_map():
                     z-index:998; filter:drop-shadow(0 0 4px rgba(0,0,0,0.5));">🔒</div>
         """ if is_locked else ""
 
-        # Veroverd → vlag marker
+        # -----------------------------------
+        # VEROVERD → VLAG MARKER
+        # -----------------------------------
+
         if loc["team"] != "none":
 
             icon_html = f"""
@@ -185,7 +210,10 @@ def generate_map():
                 icon=folium.DivIcon(html=icon_html)
             ).add_to(m)
 
-        # Niet veroverd
+        # -----------------------------------
+        # NIET VEROVERD
+        # -----------------------------------
+
         else:
 
             if is_powerup or is_locked:
@@ -269,20 +297,41 @@ def capture():
 
             if "first_captured_by" not in loc:
                 loc["first_captured_by"] = None
+            if "capture_count" not in loc:
+                loc["capture_count"] = 0
+
+            # -----------------------------------
+            # RESET
+            # -----------------------------------
 
             if new_team == "none":
+
                 owner = loc.get("first_captured_by")
                 if owner in FIRST_CAPTURES:
                     FIRST_CAPTURES[owner] = max(0, FIRST_CAPTURES[owner] - 1)
+
                 loc["first_captured"]    = False
                 loc["first_captured_by"] = None
+                loc["team"]              = "none"
+                # capture_count NIET resetten: biertjes blijven opgeteld
 
-            elif old_team == "none" and not loc.get("first_captured", False):
-                FIRST_CAPTURES[new_team] += 1
-                loc["first_captured"]    = True
-                loc["first_captured_by"] = new_team
+            # -----------------------------------
+            # VEROVERING
+            # -----------------------------------
 
-            loc["team"] = new_team
+            else:
+
+                # First capture bonus
+                if old_team == "none" and not loc.get("first_captured", False):
+                    FIRST_CAPTURES[new_team] += 1
+                    loc["first_captured"]    = True
+                    loc["first_captured_by"] = new_team
+
+                # Biertjesteller: alleen ophogen bij overname van ander team
+                if old_team != "none":
+                    loc["capture_count"] += 1
+
+                loc["team"] = new_team
 
     save_locations(locations)
     return redirect("/")
@@ -318,4 +367,3 @@ def lock():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
-    
