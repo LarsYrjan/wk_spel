@@ -6,6 +6,7 @@
     "lon": 5.127657538406204,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "-",
     "image": "leeuwenbergh.jpg"
   },
@@ -16,6 +17,7 @@
     "lon": 5.118988960167675,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "duke_of_tokyo.jpg"
   },
@@ -26,6 +28,7 @@
     "lon": 5.121410503234041,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "kafe_belgie.jpg",
     "first_captured_by": null
@@ -37,6 +40,7 @@
     "lon": 5.1194923737573825,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "twintig_twintig.jpg"
   },
@@ -47,6 +51,7 @@
     "lon": 5.117837085914687,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "kartoffel.jpg"
   },
@@ -57,6 +62,7 @@
     "lon": 5.120428564875876,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "restaurant_san_siro.jpg"
   },
@@ -67,6 +73,7 @@
     "lon": 5.127634569096338,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "cvdrvdm.jpg"
   },
@@ -77,6 +84,7 @@
     "lon": 5.110256078791378,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "smakkelaarsveld.jpg"
   },
@@ -87,6 +95,7 @@
     "lon": 5.121611393922906,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "kringloop_de_arm.jpg"
   },
@@ -97,6 +106,7 @@
     "lon": 5.125349671931099,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "nicolaikerk.jpg"
   },
@@ -107,6 +117,7 @@
     "lon": 5.1288578389907356,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "grillroom_sphinx.jpg",
     "first_captured_by": null
@@ -118,6 +129,7 @@
     "lon": 5.131344842232669,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Deze locatie bevat een power-up.",
     "image": "apotheek_koert.jpg",
     "first_captured_by": null
@@ -129,6 +141,7 @@
     "lon": 5.123883584418086,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "leo_leo.jpg"
   },
@@ -139,6 +152,7 @@
     "lon": 5.123449437654406,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "persepolis.jpg"
   },
@@ -149,6 +163,7 @@
     "lon": 5.122274693794732,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "restaurant_sevilla.jpg"
   },
@@ -159,6 +174,7 @@
     "lon": 5.118624422635546,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "the_lekker_lekker_store.jpg"
   },
@@ -169,6 +185,7 @@
     "lon": 5.128287824046733,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "park_lepelenburg.jpg"
   },
@@ -179,6 +196,7 @@
     "lon": 5.122670627116155,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "mick_o_connells.jpg"
   },
@@ -189,6 +207,7 @@
     "lon": 5.129318332852796,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "sonnenborgh.jpg"
   },
@@ -199,8 +218,10 @@
     "lon": 5.110759652169658,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
-    "image": "paardenveld.jpg"
+    "image": "paardenveld.jpg",
+    "first_captured_by": null
   },
   {
     "id": 21,
@@ -209,6 +230,7 @@
     "lon": 5.120892790878399,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "lebowski.jpg"
   },
@@ -219,6 +241,7 @@
     "lon": 5.130982697756828,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "spoorwegmuseum.jpg"
   },
@@ -229,8 +252,10 @@
     "lon": 5.118702692320174,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
-    "image": "cafe_le_journal.jpg"
+    "image": "cafe_le_journal.jpg",
+    "first_captured_by": null
   },
   {
     "id": 24,
@@ -239,6 +264,7 @@
     "lon": 5.120141559853096,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "pannakooi_asch_van_wijckskade.jpg"
   },
@@ -249,6 +275,7 @@
     "lon": 5.1200829080059975,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "number_nine.jpg"
   },
@@ -259,6 +286,7 @@
     "lon": 5.107979416322375,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Deze locatie bevat een power-up.",
     "image": "massawa_ethiopian_and_eritrean_restaurant.jpg",
     "first_captured_by": null
@@ -270,6 +298,7 @@
     "lon": 5.11858659436387,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "de_singel.jpg",
     "first_captured_by": null
@@ -281,6 +310,7 @@
     "lon": 5.114629492601267,
     "team": "none",
     "first_captured": false,
+    "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "volksbuurtmuseum.jpg"
   }
