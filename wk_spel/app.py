@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import folium
 import json
-import os
 
 app = Flask(__name__)
 
@@ -99,22 +98,27 @@ def generate_map():
 
         is_locked  = loc.get("locked", False)
         is_powerup = loc["id"] in POWERUP_LOCATIONS
+        count      = loc["capture_count"]
 
         # -----------------------------------
         # INFO TEKST
+        # Grijs → alleen opdracht, geen bier
+        # Veroverd → opdracht + biertjes (1 bij 1e verovering, +1 per overname)
         # -----------------------------------
 
         if is_locked:
             info_html = "🔒 Deze locatie kan niet meer worden veroverd middels een powerup."
-        elif loc["team"] != "none" and loc["capture_count"] > 0:
-            beer_icons = "🍺" * loc["capture_count"]
+
+        elif loc["team"] != "none":
+            beer_icons = "🍺" * count
             info_html = f"""
             {loc['information']}
             <br><br>
             <b>Om over te nemen:</b><br>
-            Voer de opdracht uit en drink {loc['capture_count']} biertje{'s' if loc['capture_count'] > 1 else ''}:<br>
+            Voer de opdracht uit en bak {count} biertje{'s' if count > 1 else ''}:<br>
             <span style="font-size:20px; letter-spacing:2px;">{beer_icons}</span>
             """
+
         else:
             info_html = loc['information']
 
@@ -301,7 +305,7 @@ def capture():
                 loc["capture_count"] = 0
 
             # -----------------------------------
-            # RESET
+            # RESET → alles terug naar 0
             # -----------------------------------
 
             if new_team == "none":
@@ -310,10 +314,10 @@ def capture():
                 if owner in FIRST_CAPTURES:
                     FIRST_CAPTURES[owner] = max(0, FIRST_CAPTURES[owner] - 1)
 
+                loc["team"]              = "none"
                 loc["first_captured"]    = False
                 loc["first_captured_by"] = None
-                loc["team"]              = "none"
-                # capture_count NIET resetten: biertjes blijven opgeteld
+                loc["capture_count"]     = 0  # ← reset biertjes ook
 
             # -----------------------------------
             # VEROVERING
@@ -327,9 +331,8 @@ def capture():
                     loc["first_captured"]    = True
                     loc["first_captured_by"] = new_team
 
-                # Biertjesteller: alleen ophogen bij overname van ander team
-                if old_team != "none":
-                    loc["capture_count"] += 1
+                # Teller ophogen bij elke verovering
+                loc["capture_count"] += 1
 
                 loc["team"] = new_team
 
