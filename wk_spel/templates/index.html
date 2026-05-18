@@ -4,7 +4,6 @@
 <head>
     <title>WK Utrecht Spel</title>
 
-    <meta http-equiv="refresh" content="20">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +43,6 @@
             border: none !important;
         }
 
-        /* Knop om scorebord te openen als hij dicht is */
         #toggle-btn {
             position: fixed;
             z-index: 10000;
@@ -57,7 +55,7 @@
             font-size: 20px;
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
             cursor: pointer;
-            display: none; /* standaard verborgen, zichtbaar als scorebord dicht is */
+            display: none;
         }
 
         .scoreboard {
@@ -86,7 +84,6 @@
             margin: 0;
         }
 
-        /* Sluit-knop */
         #close-btn {
             background: none;
             border: none;
@@ -150,7 +147,6 @@
 
 <body>
 
-    <!-- Knop om scorebord weer te openen -->
     <button id="toggle-btn" onclick="toggleScoreboard()">🏆</button>
 
     <div class="scoreboard" id="scoreboard">
@@ -162,27 +158,27 @@
 
         <div class="team-score">
             <img src="/static/flags/turkey.jpg">
-            Turkije: {{ scores.red }}
+            Turkije: <span id="score-red">{{ scores.red }}</span>
         </div>
 
         <div class="team-score">
             <img src="/static/flags/curacao.jpg">
-            Curaçao: {{ scores.blue }}
+            Curaçao: <span id="score-blue">{{ scores.blue }}</span>
         </div>
 
         <div class="team-score">
             <img src="/static/flags/korea.jpg">
-            Zuid-Korea: {{ scores.green }}
+            Zuid-Korea: <span id="score-green">{{ scores.green }}</span>
         </div>
 
         <div class="team-score">
             <img src="/static/flags/austria.jpg">
-            Oostenrijk: {{ scores.yellow }}
+            Oostenrijk: <span id="score-yellow">{{ scores.yellow }}</span>
         </div>
 
         <div class="team-score">
             <img src="/static/flags/england.jpg">
-            Engeland: {{ scores.pink }}
+            Engeland: <span id="score-pink">{{ scores.pink }}</span>
         </div>
 
         <hr>
@@ -193,27 +189,27 @@
 
             <div class="team-score">
                 <img src="/static/flags/turkey.jpg">
-                Turkije: {{ first_captures.red }}
+                Turkije: <span id="fc-red">{{ first_captures.red }}</span>
             </div>
 
             <div class="team-score">
                 <img src="/static/flags/curacao.jpg">
-                Curaçao: {{ first_captures.blue }}
+                Curaçao: <span id="fc-blue">{{ first_captures.blue }}</span>
             </div>
 
             <div class="team-score">
                 <img src="/static/flags/korea.jpg">
-                Zuid-Korea: {{ first_captures.green }}
+                Zuid-Korea: <span id="fc-green">{{ first_captures.green }}</span>
             </div>
 
             <div class="team-score">
                 <img src="/static/flags/austria.jpg">
-                Oostenrijk: {{ first_captures.yellow }}
+                Oostenrijk: <span id="fc-yellow">{{ first_captures.yellow }}</span>
             </div>
 
             <div class="team-score">
                 <img src="/static/flags/england.jpg">
-                Engeland: {{ first_captures.pink }}
+                Engeland: <span id="fc-pink">{{ first_captures.pink }}</span>
             </div>
 
         </div>
@@ -225,6 +221,11 @@
     </div>
 
     <script>
+
+        // -----------------------------------
+        // SCOREBORD TOGGLE
+        // -----------------------------------
+
         function toggleScoreboard() {
             const scoreboard = document.getElementById('scoreboard');
             const toggleBtn  = document.getElementById('toggle-btn');
@@ -237,6 +238,82 @@
                 toggleBtn.style.display  = 'block';
             }
         }
+
+
+        // -----------------------------------
+        // SCORES UPDATEN (elke 10 seconden)
+        // -----------------------------------
+
+        function updateScores() {
+            fetch('/api/scores')
+                .then(r => r.json())
+                .then(data => {
+                    document.getElementById('score-red').textContent    = data.scores.red;
+                    document.getElementById('score-blue').textContent   = data.scores.blue;
+                    document.getElementById('score-green').textContent  = data.scores.green;
+                    document.getElementById('score-yellow').textContent = data.scores.yellow;
+                    document.getElementById('score-pink').textContent   = data.scores.pink;
+
+                    document.getElementById('fc-red').textContent    = data.first_captures.red;
+                    document.getElementById('fc-blue').textContent   = data.first_captures.blue;
+                    document.getElementById('fc-green').textContent  = data.first_captures.green;
+                    document.getElementById('fc-yellow').textContent = data.first_captures.yellow;
+                    document.getElementById('fc-pink').textContent   = data.first_captures.pink;
+                })
+                .catch(err => console.log('Score update mislukt:', err));
+        }
+
+
+        // -----------------------------------
+        // KAART UPDATEN (elke 30 seconden)
+        // Bewaart huidige zoom en positie
+        // -----------------------------------
+
+        function updateMap() {
+            fetch('/api/map')
+                .then(r => r.json())
+                .then(data => {
+                    const mapDiv = document.getElementById('map');
+
+                    // Huidige iframe opslaan om zoom/positie te lezen
+                    const oldIframe = mapDiv.querySelector('iframe');
+                    let center = null;
+                    let zoom   = null;
+
+                    try {
+                        const oldMap = oldIframe.contentWindow.Object.values(
+                            oldIframe.contentWindow.L._instances || {}
+                        )[0];
+                        if (oldMap) {
+                            center = oldMap.getCenter();
+                            zoom   = oldMap.getZoom();
+                        }
+                    } catch(e) {}
+
+                    // Nieuwe kaart inladen
+                    mapDiv.innerHTML = data.map_html;
+
+                    // Na laden: zoom/positie herstellen
+                    if (center && zoom) {
+                        const newIframe = mapDiv.querySelector('iframe');
+                        newIframe.addEventListener('load', function() {
+                            try {
+                                const newMap = Object.values(
+                                    newIframe.contentWindow.L._instances || {}
+                                )[0];
+                                if (newMap) {
+                                    newMap.setView(center, zoom, { animate: false });
+                                }
+                            } catch(e) {}
+                        });
+                    }
+                })
+                .catch(err => console.log('Kaart update mislukt:', err));
+        }
+
+        setInterval(updateScores, 10000);  // scores: elke 10 seconden
+        setInterval(updateMap,    30000);  // kaart:  elke 30 seconden
+
     </script>
 
 </body>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 import folium
 import json
 
@@ -104,8 +104,6 @@ def generate_map():
 
         # -----------------------------------
         # INFO TEKST
-        # Grijs → alleen opdracht, geen bier
-        # Veroverd → opdracht + biertjes (1 bij 1e verovering, +1 per overname)
         # -----------------------------------
 
         if is_locked:
@@ -117,7 +115,7 @@ def generate_map():
             {loc['information']}
             <br><br>
             <b>Om over te nemen:</b><br>
-            Voer de opdracht uit en bak {count} biertje{'s' if count > 1 else ''}:<br>
+            Voer de opdracht uit en drink {count} biertje{'s' if count > 1 else ''}:<br>
             <span style="font-size:20px; letter-spacing:2px;">{beer_icons}</span>
             """
 
@@ -275,6 +273,33 @@ def index():
 
 
 # -----------------------------------
+# SCORES API
+# -----------------------------------
+
+@app.route("/api/scores")
+def api_scores():
+
+    locations = load_locations()
+
+    scores = {"red": 0, "blue": 0, "green": 0, "yellow": 0, "pink": 0}
+
+    for loc in locations:
+        if loc["team"] in scores:
+            scores[loc["team"]] += 1
+
+    return jsonify(scores=scores, first_captures=FIRST_CAPTURES)
+
+
+# -----------------------------------
+# MAP API
+# -----------------------------------
+
+@app.route("/api/map")
+def api_map():
+    return jsonify(map_html=generate_map())
+
+
+# -----------------------------------
 # CAPTURE LOGICA
 # -----------------------------------
 
@@ -319,7 +344,7 @@ def capture():
                 loc["team"]              = "none"
                 loc["first_captured"]    = False
                 loc["first_captured_by"] = None
-                loc["capture_count"]     = 0  # ← reset biertjes ook
+                loc["capture_count"]     = 0
 
             # -----------------------------------
             # VEROVERING
