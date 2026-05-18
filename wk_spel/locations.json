@@ -8,7 +8,9 @@
     "first_captured": false,
     "locked": false,
     "information": "-",
-    "image": "leeuwenbergh.jpg"
+    "image": "leeuwenbergh.jpg",
+    "first_captured_by": null,
+    "capture_count": 0
   },
   {
     "id": 2,
@@ -192,7 +194,9 @@
     "first_captured": false,
     "locked": false,
     "information": "Zoek een straatmuzikant.",
-    "image": "park_lepelenburg.jpg"
+    "image": "park_lepelenburg.jpg",
+    "first_captured_by": null,
+    "capture_count": 0
   },
   {
     "id": 18,
@@ -248,7 +252,9 @@
     "first_captured": false,
     "locked": false,
     "information": "Zoek een straatmuzikant.",
-    "image": "spoorwegmuseum.jpg"
+    "image": "spoorwegmuseum.jpg",
+    "first_captured_by": null,
+    "capture_count": 0
   },
   {
     "id": 23,
@@ -308,7 +314,8 @@
     "locked": false,
     "information": "Zoek een straatmuzikant.",
     "image": "de_singel.jpg",
-    "first_captured_by": null
+    "first_captured_by": null,
+    "capture_count": 0
   },
   {
     "id": 28,

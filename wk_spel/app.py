@@ -81,7 +81,9 @@ def generate_map():
     m = folium.Map(
         location=[52.0907, 5.1214],
         zoom_start=15,
-        tiles="CartoDB positron"
+        tiles="CartoDB positron",
+        width="100%",
+        height="100%"
     )
 
     for loc in locations:

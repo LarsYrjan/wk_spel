@@ -5,111 +5,144 @@
     <title>WK Utrecht Spel</title>
 
     <meta http-equiv="refresh" content="20">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <!-- Inter font (modern, clean UI font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
 
-        html, body {
-            height: 100%;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
 
-            font-family:
-                "Inter",
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        #map {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #map > div,
+        #map iframe {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            border: none !important;
+        }
+
+        /* Knop om scorebord te openen als hij dicht is */
+        #toggle-btn {
+            position: fixed;
+            z-index: 10000;
+            top: 10px;
+            left: 10px;
+            background: white;
+            border: none;
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: none; /* standaard verborgen, zichtbaar als scorebord dicht is */
         }
 
         .scoreboard {
-            position: absolute;
+            position: fixed;
             z-index: 9999;
-
             top: 10px;
             left: 10px;
-
             background: white;
-
-            padding: 15px;
-
+            padding: 12px;
             border-radius: 12px;
-
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
-
-            min-width: 240px;
-            max-height: 90vh;
-
+            min-width: 180px;
+            max-height: 80vh;
             overflow-y: auto;
         }
 
+        .scoreboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
         .scoreboard h2 {
-            margin-top: 0;
-            margin-bottom: 15px;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Sluit-knop */
+        #close-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 0 0 0 10px;
+            line-height: 1;
+            color: #666;
         }
 
         .scoreboard h3 {
-            margin-top: 20px;
-            margin-bottom: 10px;
-
-            font-size: 18px;
+            margin-top: 12px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .team-score {
             display: flex;
             align-items: center;
-            gap: 10px;
-
-            margin-bottom: 10px;
-
-            font-size: 18px;
+            gap: 8px;
+            margin-bottom: 6px;
+            font-size: 14px;
         }
 
         .team-score img {
-            width: 32px;
+            width: 24px;
             height: auto;
-
             border-radius: 3px;
-
             border: 1px solid #ccc;
         }
 
         hr {
-            margin-top: 20px;
-            margin-bottom: 20px;
-
+            margin-top: 12px;
+            margin-bottom: 12px;
             border: none;
             border-top: 1px solid #ddd;
         }
 
-        /* kleinere first captures sectie */
         .first-captures {
-            margin-top: 10px;
+            margin-top: 4px;
         }
 
         .first-captures .team-score {
-            font-size: 14px;
-            margin-bottom: 6px;
+            font-size: 13px;
+            margin-bottom: 5px;
         }
 
         .first-captures .team-score img {
-            width: 22px;
-            height: auto;
+            width: 20px;
         }
 
         .first-captures h3 {
-            font-size: 15px;
-            margin-top: 10px;
-            margin-bottom: 8px;
-        }
-
-        #map {
-            width: 100%;
-            height: 100vh;
+            font-size: 13px;
         }
 
     </style>
@@ -117,11 +150,15 @@
 
 <body>
 
-    <div class="scoreboard">
+    <!-- Knop om scorebord weer te openen -->
+    <button id="toggle-btn" onclick="toggleScoreboard()">🏆</button>
 
-        <h2>WK Drankspel</h2>
+    <div class="scoreboard" id="scoreboard">
 
-        <!-- TOTALE SCORE -->
+        <div class="scoreboard-header">
+            <h2>WK Drankspel</h2>
+            <button id="close-btn" onclick="toggleScoreboard()">✕</button>
+        </div>
 
         <div class="team-score">
             <img src="/static/flags/turkey.jpg">
@@ -149,8 +186,6 @@
         </div>
 
         <hr>
-
-        <!-- EERSTE VEROEVERINGEN -->
 
         <div class="first-captures">
 
@@ -188,6 +223,21 @@
     <div id="map">
         {{ map_html|safe }}
     </div>
+
+    <script>
+        function toggleScoreboard() {
+            const scoreboard = document.getElementById('scoreboard');
+            const toggleBtn  = document.getElementById('toggle-btn');
+
+            if (scoreboard.style.display === 'none') {
+                scoreboard.style.display = 'block';
+                toggleBtn.style.display  = 'none';
+            } else {
+                scoreboard.style.display = 'none';
+                toggleBtn.style.display  = 'block';
+            }
+        }
+    </script>
 
 </body>
 </html>
