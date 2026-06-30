@@ -67,7 +67,7 @@ FIRST_CAPTURES = {
 # POWERUPS
 # -----------------------------------
 
-POWERUP_LOCATIONS = [12, 26]
+POWERUP_LOCATIONS = [12, 22]
 
 
 # -----------------------------------
