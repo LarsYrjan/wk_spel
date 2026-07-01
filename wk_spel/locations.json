@@ -139,7 +139,7 @@
     "team": "none",
     "first_captured": false,
     "locked": false,
-    "information": "Deze locatie bevat een power-up.",
+    "information": "-",
     "image": "apotheek_koert.jpg",
     "first_captured_by": null,
     "capture_count": 0
@@ -286,7 +286,9 @@
     "first_captured": false,
     "locked": false,
     "information": "-",
-    "image": "pannakooi_asch_van_wijckskade.jpg"
+    "image": "pannakooi_asch_van_wijckskade.jpg",
+    "first_captured_by": null,
+    "capture_count": 0
   },
   {
     "id": 25,
@@ -309,7 +311,7 @@
     "team": "none",
     "first_captured": false,
     "locked": false,
-    "information": "-",
+    "information": "Deze locatie bevat een power-up.",
     "image": "massawa_ethiopian_and_eritrean_restaurant.jpg",
     "first_captured_by": null
   },
@@ -347,5 +349,16 @@
     "locked": false,
     "information": "-",
     "image": "7_steegjes.jpg"
+  },
+  {
+    "id": 30,
+    "name": "Nijntje Museum",
+    "lat": 52.08388371221405,
+    "lon": 5.1256140341900736,
+    "team": "none",
+    "first_captured": false,
+    "locked": false,
+    "information": "-",
+    "image": "nijntje_museum.jpg"
   }
 ]

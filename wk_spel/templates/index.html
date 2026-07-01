@@ -167,11 +167,6 @@
         </div>
 
         <div class="team-score">
-            <img src="/static/flags/korea.jpg">
-            Zuid-Korea: <span id="score-green">{{ scores.green }}</span>
-        </div>
-
-        <div class="team-score">
             <img src="/static/flags/austria.jpg">
             Oostenrijk: <span id="score-yellow">{{ scores.yellow }}</span>
         </div>
@@ -195,11 +190,6 @@
             <div class="team-score">
                 <img src="/static/flags/curacao.jpg">
                 Curaçao: <span id="fc-blue">{{ first_captures.blue }}</span>
-            </div>
-
-            <div class="team-score">
-                <img src="/static/flags/korea.jpg">
-                Zuid-Korea: <span id="fc-green">{{ first_captures.green }}</span>
             </div>
 
             <div class="team-score">
@@ -250,13 +240,11 @@
                 .then(data => {
                     document.getElementById('score-red').textContent    = data.scores.red;
                     document.getElementById('score-blue').textContent   = data.scores.blue;
-                    document.getElementById('score-green').textContent  = data.scores.green;
                     document.getElementById('score-yellow').textContent = data.scores.yellow;
                     document.getElementById('score-pink').textContent   = data.scores.pink;
 
                     document.getElementById('fc-red').textContent    = data.first_captures.red;
                     document.getElementById('fc-blue').textContent   = data.first_captures.blue;
-                    document.getElementById('fc-green').textContent  = data.first_captures.green;
                     document.getElementById('fc-yellow').textContent = data.first_captures.yellow;
                     document.getElementById('fc-pink').textContent   = data.first_captures.pink;
                 })
@@ -312,7 +300,7 @@
         }
 
         setInterval(updateScores, 10000);  // scores: elke 10 seconden
-        setInterval(updateMap,    30000);  // kaart:  elke 30 seconden
+        setInterval(updateMap,    60000);  // kaart:  elke 60 seconden
 
     </script>
 

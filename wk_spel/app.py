@@ -28,7 +28,6 @@ def save_locations(data):
 TEAM_NAMES = {
     "red": "Turkije",
     "blue": "Curaçao",
-    "green": "Zuid-Korea",
     "yellow": "Oostenrijk",
     "pink": "Engeland",
     "none": "Niemand"
@@ -37,7 +36,6 @@ TEAM_NAMES = {
 TEAM_ICONS = {
     "red": "static/icons/turkey.jpg",
     "blue": "static/icons/curacao.jpg",
-    "green": "static/icons/korea.jpg",
     "yellow": "static/icons/austria.jpg",
     "pink": "static/icons/england.jpg"
 }
@@ -57,7 +55,6 @@ ADMIN_PASSWORD = "wk2026"
 FIRST_CAPTURES = {
     "red": 0,
     "blue": 0,
-    "green": 0,
     "yellow": 0,
     "pink": 0
 }
@@ -67,7 +64,7 @@ FIRST_CAPTURES = {
 # POWERUPS
 # -----------------------------------
 
-POWERUP_LOCATIONS = [12, 22]
+POWERUP_LOCATIONS = [26, 22]
 
 
 # -----------------------------------
@@ -137,7 +134,6 @@ def generate_map():
             <select name="team" style="width:100%; margin-bottom:8px; padding:6px;">
                 <option value="red">Turkije</option>
                 <option value="blue">Curaçao</option>
-                <option value="green">Zuid-Korea</option>
                 <option value="yellow">Oostenrijk</option>
                 <option value="pink">Engeland</option>
                 <option value="none">Reset</option>
@@ -258,7 +254,7 @@ def index():
 
     locations = load_locations()
 
-    scores = {"red": 0, "blue": 0, "green": 0, "yellow": 0, "pink": 0}
+    scores = {"red": 0, "blue": 0, "yellow": 0, "pink": 0}
 
     for loc in locations:
         if loc["team"] in scores:
@@ -281,7 +277,7 @@ def api_scores():
 
     locations = load_locations()
 
-    scores = {"red": 0, "blue": 0, "green": 0, "yellow": 0, "pink": 0}
+    scores = {"red": 0, "blue": 0, "yellow": 0, "pink": 0}
 
     for loc in locations:
         if loc["team"] in scores:
