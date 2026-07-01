@@ -205,7 +205,7 @@ def generate_map():
 
             folium.Marker(
                 location=[loc["lat"], loc["lon"]],
-                popup=folium.Popup(popup_html, max_width=300),
+                popup=folium.Popup(popup_html, max_width=300, parse_html=False),
                 tooltip=loc["name"],
                 icon=folium.DivIcon(html=icon_html)
             ).add_to(m)
@@ -228,7 +228,7 @@ def generate_map():
 
                 folium.Marker(
                     location=[loc["lat"], loc["lon"]],
-                    popup=folium.Popup(popup_html, max_width=300),
+                    popup=folium.Popup(popup_html, max_width=300, parse_html=False),
                     tooltip=loc["name"],
                     icon=folium.DivIcon(html=icon_html)
                 ).add_to(m)
@@ -237,10 +237,13 @@ def generate_map():
 
                 folium.Marker(
                     location=[loc["lat"], loc["lon"]],
-                    popup=folium.Popup(popup_html, max_width=300),
+                    popup=folium.Popup(popup_html, max_width=300, parse_html=False),
                     tooltip=loc["name"],
                     icon=folium.Icon(color="gray", icon="info-sign")
                 ).add_to(m)
+
+    # Dwing de browser om formulieren/scripts binnen het iframe toe te staan (fix voor 'trusted notebook' melding)
+    m.get_root().html.add_child(folium.Element("<script>window.onload = function() { var iframes = document.getElementsByTagName('iframe'); for (var i = 0; i < iframes.length; i++) { iframes[i].setAttribute('sandbox', 'allow-forms allow-scripts allow-same-origin'); } }</script>"))
 
     return m._repr_html_()
 
