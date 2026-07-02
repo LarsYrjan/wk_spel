@@ -242,8 +242,20 @@ def generate_map():
                     icon=folium.Icon(color="gray", icon="info-sign")
                 ).add_to(m)
 
-    # Dwing de browser om formulieren/scripts binnen het iframe toe te staan (fix voor 'trusted notebook' melding)
-    m.get_root().html.add_child(folium.Element("<script>window.onload = function() { var iframes = document.getElementsByTagName('iframe'); for (var i = 0; i < iframes.length; i++) { iframes[i].setAttribute('sandbox', 'allow-forms allow-scripts allow-same-origin'); } }</script>"))
+    # Deze verbeterde hack dwingt ALLE huidige en toekomstige iframes open zodat de slotjes- én veroverknop werken
+    script_html = """
+    <script>
+    function openSandboxes() {
+        var iframes = document.getElementsByTagName('iframe');
+        for (var i = 0; i < iframes.length; i++) {
+            iframes[i].setAttribute('sandbox', 'allow-forms allow-scripts allow-same-origin');
+        }
+    }
+    window.onload = openSandboxes;
+    setInterval(openSandboxes, 2000); // Blijf controleren voor het geval de kaart herlaadt
+    </script>
+    """
+    m.get_root().html.add_child(folium.Element(script_html))
 
     return m._repr_html_()
 
